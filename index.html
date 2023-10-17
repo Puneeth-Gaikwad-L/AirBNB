@@ -11,6 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -58,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <div class="search-box">
+        <div id="search-bar" class="search-box">
             <div>
                 <label for="location">Location</label><br>
                 <input id="location" type="text" placeholder="Where are you going?">
@@ -72,13 +76,15 @@
                 <input id="check-out" type="date" placeholder="Add date">
             </div>
             <div>
-                <label for="guests">Check out</label><br>
+                <label for="guests">Add guests</label><br>
                 <input id="guests" type="text" placeholder="Add guests">
             </div>
-
-            <button class="search-btn">
-                <img src="./assests/Images/navbar-img/Icon Button Base.png" alt="">
-            </button>
+            <div id="search-btn-div">
+                <button id="search-btn" class="search-btn">
+                    <span id="search"></span>
+                    <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -256,6 +262,7 @@
             </div>
         </div>
     </section>
+    <script src="./script.js"></script>
 </body>
 
 </html>
