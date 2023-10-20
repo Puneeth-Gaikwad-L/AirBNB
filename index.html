@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Airbnb</title>
 
-    <link rel="stylesheet" href="./assests/homePage/styles.css">
+    <link rel="stylesheet" href="./assests/homePage-styling/styles.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,30 +62,30 @@
                 </div>
             </div>
         </div>
-        <div id="search-bar" class="search-box">
+        <form id="search-bar" class="search-box">
             <div>
                 <label for="location">Location</label><br>
-                <input id="location" type="text" placeholder="Where are you going?">
+                <input id="location" type="text" name="place" placeholder="Where are you going?">
             </div>
             <div>
                 <label for="Check-in">Check in</label><br>
-                <input id="check-in" type="date" placeholder="Add date">
+                <input id="check-in" type="date" name="checkIn" placeholder="Add date">
             </div>
             <div>
                 <label for="Check-out">Check out</label><br>
-                <input id="check-out" type="date" placeholder="Add date">
+                <input id="check-out" type="date" name="checkOut" placeholder="Add date">
             </div>
             <div>
                 <label for="guests">Add guests</label><br>
-                <input id="guests" type="text" placeholder="Add guests">
+                <input id="guests" type="text" name="guests" placeholder="Add guests">
             </div>
             <div id="search-btn-div">
-                <button id="search-btn" class="search-btn">
+                <button type="submit" id="search-btn" class="search-btn">
                     <span id="search"></span>
                     <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
                 </button>
             </div>
-        </div>
+        </form>
     </header>
 
 
@@ -262,7 +262,8 @@
             </div>
         </div>
     </section>
-    <script src="./assests/homePage/script.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
+    <script type="text/javascript" src="./script2.js"></script>
 </body>
 
 </html>

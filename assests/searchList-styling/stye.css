@@ -16,7 +16,7 @@ header {
     top: 0;
     padding: 15px;
     overflow: hidden;
-    z-index: 1000;
+    z-index: 10;
     background-color: #FFF;
 }
 
@@ -44,9 +44,11 @@ header {
 }
 
 .my-header {
+    width: 95%;
+    margin-inline: auto;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .search-box {
@@ -172,7 +174,6 @@ header {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* margin-left: 5px; */
     text-align: center;
     margin-inline: auto;
     color: #6B7280;
@@ -200,5 +201,6 @@ header {
 
 .footer {
     width: 100vw;
-    height: 40vh;
+    height: 50vh;
+    background-color: #e5e5e5;
 }
