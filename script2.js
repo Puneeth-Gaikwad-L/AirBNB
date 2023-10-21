@@ -1,6 +1,4 @@
 const cardContainer = document.getElementById("cardContainer");
-getData(searchPlace.place, searchPlace.checkIn, searchPlace.checkOut, searchPlace.guests);
-
 const options = {
     method: 'GET',
     headers: {
@@ -8,6 +6,11 @@ const options = {
         'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com'
     }
 };
+const apiObject = JSON.parse(localStorage.getItem("searchObject"));
+console.log(apiObject);
+getData(apiObject.place, apiObject.checkIn, apiObject.checkOut, apiObject.guests);
+
+
 
 async function getData(place, checkIn, checkOut, guests) {
     const url = 'https://airbnb13.p.rapidapi.com/search-location?location=' + place + '&checkin=' + checkIn + '&checkout=' + checkOut + '&adults=' + guests + '&children=0&infants=0&pets=0&page=1&currency=INR';
