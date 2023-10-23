@@ -145,6 +145,11 @@ header {
     object-position: center;
 }
 
+.my-card-img>img{
+    width: 100%;
+    height: 100%;
+}
+
 .my-card-title {
     width: 100%;
     display: flex;
@@ -174,7 +179,6 @@ header {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: center;
     margin-inline: auto;
     color: #6B7280;
 }
