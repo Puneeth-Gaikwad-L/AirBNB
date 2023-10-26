@@ -13,20 +13,8 @@ document.title = `Airbnb | ${apiObject.place} - Holiday Rentals & Places to Stay
 
 
 async function getAPIdata(place, checkIn, checkOut, guests) {
-    const url = 'https://airbnb13.p.rapidapi.com/search-location?location=' + place + '&checkin=' + checkIn + '&checkout=' + checkOut + '&adults=' + guests + '&children=0&infants=0&pets=0&page=1&currency=INR';
+    const url = `https://airbnb13.p.rapidapi.com/search-location?location=${place}&checkin=${checkIn}&checkout=${checkOut}&adults=${guests}&children=0&infants=0&pets=0&page=1&currency=INR`;
     return fetch(url, options)
-    // .then(response => response.json())
-    //     .then(data => console.log(data))
-    // .then((response) => {
-    //     // calling the createCard function to render the hotels
-    //     for (let i = 0; i < response.results.length; i++) {
-    //         createCard(response.results[i].images[0], response.results[i].type, response.results[i].rating, response.results[i].reviewsCount, response.results[i].name, response.results[i].beds, response.results[i].bedrooms, response.results[i].price.rate);
-    //         let arr = [response.results[i].name, response.results[i].lat, response.results[i].lng];
-    //         hotels.push(arr);
-    //     }
-
-    // })
-    // .catch(err => console.error(err));
 }
 
 
@@ -109,21 +97,9 @@ function formatDate(checkIn, checkOut) {
 
 // ******************** Google maps logic *******************//
 
-
-
-const hotels = [];
-
-const beaches = [
-    ["Gayathrinagar", 12.9995969, 77.5558388, 13000],
-    ["kalyan Nagar", 13.028005, 77.639969, 5],
-    ["Cronulla Beach", -34.028249, 151.157507, 3],
-    ["Manly Beach", -33.80010128657071, 151.28747820854187, 2],
-    ["Maroubra Beach", -33.950198, 151.259302, 1],
-];
-
 async function initMap() {
     try {
-       const map = new google.maps.Map(document.getElementById("map"), {
+        const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 10.5,
             center: { lat: 12.972442, lng: 77.580643 },
             streetViewControl: false,
@@ -138,61 +114,20 @@ async function initMap() {
             mapTypeControl: false,
             rotateControl: false
         })
-        const response = await getAPIdata(apiObject.place, apiObject.checkIn, apiObject.checkOut, apiObject.guests)
+        // const response = await getAPIdata(apiObject.place, apiObject.checkIn, apiObject.checkOut, apiObject.guests)
         const data = await response.json();
         if (data.message !== limitErr) {
             console.log(data);
             for (let i = 0; i < data.results.length; i++) {
                 createCard(data.results[i].images[0], data.results[i].type, data.results[i].rating, data.results[i].reviewsCount, data.results[i].name, data.results[i].beds, data.results[i].bedrooms, data.results[i].price.rate);
-                // let arr = [data.results[i].name, data.results[i].lat, data.results[i].lng];
                 setMarkers(map, data.results[i].lat, data.results[i].lng, JSON.stringify(data.results[i].name));
-                // console.log(data.results[i].name, data.results[i].lat, data.results[i].lng);
-
-                // hotels.push(arr);
             }
         }
-        // } else {
-        //     console.log("failed to load data");
-        // }
-        
-
     } catch (err) {
         console.log(err);
     }
 
 }
-
-// async function initMap() {
-//     try {
-//       const x = await getData(apiObject.place, apiObject.checkIn, apiObject.checkOut, apiObject.guests);
-
-//       // Create a new map once you have the data
-//       const map = new google.maps.Map(document.getElementById("map"), {
-//         zoom: 11,
-//         center: { lat: 12.972442, lng: 77.580643 },
-//         streetViewControl: false,
-//         zoomControl: true,
-//         zoomControlOptions: {
-//           position: google.maps.ControlPosition.RIGHT_TOP
-//         },
-//         fullscreenControl: true,
-//         fullscreenControlOptions: {
-//           position: google.maps.ControlPosition.LEFT_TOP
-//         },
-//         mapTypeControl: false,
-//         rotateControl: false
-//       });
-
-//       // Set markers on the map
-//       setMarkers(map);
-//     } catch (error) {
-//       console.error("Error fetching data:", error);
-//     }
-//   }
-
-// Data for the markers consisting of a name, a LatLng and a zIndex for the
-// order in which these markers should display on top of each other.
-
 
 
 function setMarkers(map, lat, lng, title) {
@@ -210,30 +145,6 @@ function setMarkers(map, lat, lng, title) {
         map,
         title: title,
     });
-
-
-    // hotels.forEach(hotel => {
-    //     console.log(hotel)
-    //     const marker = new google.maps.Marker({
-    //         position: { lat: hotel[1], lng: hotel[2] },
-    //         // label: b,
-    //         map,
-    //         title: hotel[0],
-    //     })
-    // })
 }
-
-// function setMarkers(map, data) {
-//     data.forEach((hotels) => {
-//       const marker = new google.maps.Marker({
-//         position: { lat: hotels.latitude, lng: hotels.longitude }, // Use your data's field names for latitude and longitude
-//         map: map,
-//         title: hotels.title, // Optional: Set a title for the marker
-//       });
-
-//       // Optionally, add click event listeners or other custom functionality to the marker.
-//     });
-//   }
-
 
 window.initMap = initMap;
