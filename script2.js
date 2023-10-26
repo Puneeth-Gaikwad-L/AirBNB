@@ -1,32 +1,32 @@
 const cardContainer = document.getElementById("cardContainer");
-let count = 1;
+const limitErr = "You have exceeded the rate limit per minute for your plan, BASIC, by the API provider";
 const options = {
     method: 'GET',
     headers: {
-        'X-RapidAPI-Key': '40abd47a13msh0e0a1cedce84452p1ea8e0jsndf3d5a672f5d',
+        'X-RapidAPI-Key': 'c5014a6b6emsh84288eb75db9f9fp1759f6jsn73c5e567590c',
+        // 'X-RapidAPI-Key': '35529e50acmshe42c2bf03c7e96dp12989cjsn06b3989d95a2',
         'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com'
     }
 };
 const apiObject = JSON.parse(localStorage.getItem("searchObject"));
-getData(apiObject.place, apiObject.checkIn, apiObject.checkOut, apiObject.guests);
+document.title = `Airbnb | ${apiObject.place} - Holiday Rentals & Places to Stay`
 
 
-async function getData(place, checkIn, checkOut, guests) {
+async function getAPIdata(place, checkIn, checkOut, guests) {
     const url = 'https://airbnb13.p.rapidapi.com/search-location?location=' + place + '&checkin=' + checkIn + '&checkout=' + checkOut + '&adults=' + guests + '&children=0&infants=0&pets=0&page=1&currency=INR';
-    fetch(url, options)
-        .then(response => response.json())
-        .then((response) => {
-            count++;
-            console.log(count);
-            // calling the createCard function to render the hotels
-            for (let i = 0; i < response.results.length; i++) {
-                createCard(response.results[i].images[0], response.results[i].type, response.results[i].rating, response.results[i].reviewsCount, response.results[i].name, response.results[i].beds, response.results[i].bedrooms, response.results[i].price.rate);
-                let arr = [response.results[i].name, response.results[i].lat, response.results[i].lng];
-                hotels.push(arr);
-            }
+    return fetch(url, options)
+    // .then(response => response.json())
+    //     .then(data => console.log(data))
+    // .then((response) => {
+    //     // calling the createCard function to render the hotels
+    //     for (let i = 0; i < response.results.length; i++) {
+    //         createCard(response.results[i].images[0], response.results[i].type, response.results[i].rating, response.results[i].reviewsCount, response.results[i].name, response.results[i].beds, response.results[i].bedrooms, response.results[i].price.rate);
+    //         let arr = [response.results[i].name, response.results[i].lat, response.results[i].lng];
+    //         hotels.push(arr);
+    //     }
 
-        })
-        .catch(err => console.error(err));
+    // })
+    // .catch(err => console.error(err));
 }
 
 
@@ -110,18 +110,8 @@ function formatDate(checkIn, checkOut) {
 // ******************** Google maps logic *******************//
 
 
-/**
-       //@license
-        * Copyright 2019 Google LLC. All Rights Reserved.
-        * SPDX-License-Identifier: Apache-2.0
-        */
-// The following example creates complex markers to indicate beaches near
-// Sydney, NSW, Australia. Note that the anchor is set to (0,32) to correspond
-// to the base of the flagpole.
-
 
 const hotels = [];
-console.log(hotels);
 
 const beaches = [
     ["Gayathrinagar", 12.9995969, 77.5558388, 13000],
@@ -132,32 +122,81 @@ const beaches = [
 ];
 
 async function initMap() {
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 11,
-        center: { lat: 12.972442, lng: 77.580643 },
-        streetViewControl: false,
-        zoomControl: true,
-        zoomControlOptions: {
-            position: google.maps.ControlPosition.RIGHT_TOP
-        },
-        fullscreenControl: true,
-        fullscreenControlOptions: {
-            position: google.maps.ControlPosition.LEFT_TOP
-        },
-        mapTypeControl: false,
-        rotateControl: false
-    });
+    try {
+       const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 10.5,
+            center: { lat: 12.972442, lng: 77.580643 },
+            streetViewControl: false,
+            zoomControl: true,
+            zoomControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_TOP
+            },
+            fullscreenControl: true,
+            fullscreenControlOptions: {
+                position: google.maps.ControlPosition.LEFT_TOP
+            },
+            mapTypeControl: false,
+            rotateControl: false
+        })
+        const response = await getAPIdata(apiObject.place, apiObject.checkIn, apiObject.checkOut, apiObject.guests)
+        const data = await response.json();
+        if (data.message !== limitErr) {
+            console.log(data);
+            for (let i = 0; i < data.results.length; i++) {
+                createCard(data.results[i].images[0], data.results[i].type, data.results[i].rating, data.results[i].reviewsCount, data.results[i].name, data.results[i].beds, data.results[i].bedrooms, data.results[i].price.rate);
+                // let arr = [data.results[i].name, data.results[i].lat, data.results[i].lng];
+                setMarkers(map, data.results[i].lat, data.results[i].lng, JSON.stringify(data.results[i].name));
+                // console.log(data.results[i].name, data.results[i].lat, data.results[i].lng);
 
+                // hotels.push(arr);
+            }
+        }
+        // } else {
+        //     console.log("failed to load data");
+        // }
+        
 
-    setMarkers(map);
+    } catch (err) {
+        console.log(err);
+    }
+
 }
+
+// async function initMap() {
+//     try {
+//       const x = await getData(apiObject.place, apiObject.checkIn, apiObject.checkOut, apiObject.guests);
+
+//       // Create a new map once you have the data
+//       const map = new google.maps.Map(document.getElementById("map"), {
+//         zoom: 11,
+//         center: { lat: 12.972442, lng: 77.580643 },
+//         streetViewControl: false,
+//         zoomControl: true,
+//         zoomControlOptions: {
+//           position: google.maps.ControlPosition.RIGHT_TOP
+//         },
+//         fullscreenControl: true,
+//         fullscreenControlOptions: {
+//           position: google.maps.ControlPosition.LEFT_TOP
+//         },
+//         mapTypeControl: false,
+//         rotateControl: false
+//       });
+
+//       // Set markers on the map
+//       setMarkers(map);
+//     } catch (error) {
+//       console.error("Error fetching data:", error);
+//     }
+//   }
 
 // Data for the markers consisting of a name, a LatLng and a zIndex for the
 // order in which these markers should display on top of each other.
 
 
 
-function setMarkers(map) {
+function setMarkers(map, lat, lng, title) {
+    console.log(title);
 
     // Adds markers to the map.
     // Marker sizes are expressed as a Size of X,Y where the origin of the image
@@ -165,27 +204,36 @@ function setMarkers(map) {
     // Origins, anchor positions and coordinates of the marker increase in the X
     // direction to the right and in the Y direction down.
 
-    for (let i = 0; i < hotels.length; i++) {
-        const hotel = hotels[i];
+    new google.maps.Marker({
+        position: { lat: lat, lng: lng },
+        // label: b,
+        map,
+        title: title,
+    });
 
-        // new google.maps.Marker({
-        //     position: { lat: beach[1], lng: beach[2] },
-        //     map,
-        //     icon: image,
-        //     shape: shape,
-        //     title: beach[0],
-        //     zIndex: beach[3],
-        // });
 
-        new google.maps.Marker({
-            position: { lat: hotel[1], lng: hotel[2] },
-            // label: b,
-            map,
-            title: hotel[0],
-        });
-    }
+    // hotels.forEach(hotel => {
+    //     console.log(hotel)
+    //     const marker = new google.maps.Marker({
+    //         position: { lat: hotel[1], lng: hotel[2] },
+    //         // label: b,
+    //         map,
+    //         title: hotel[0],
+    //     })
+    // })
 }
 
-// initMap();
+// function setMarkers(map, data) {
+//     data.forEach((hotels) => {
+//       const marker = new google.maps.Marker({
+//         position: { lat: hotels.latitude, lng: hotels.longitude }, // Use your data's field names for latitude and longitude
+//         map: map,
+//         title: hotels.title, // Optional: Set a title for the marker
+//       });
+
+//       // Optionally, add click event listeners or other custom functionality to the marker.
+//     });
+//   }
+
 
 window.initMap = initMap;
