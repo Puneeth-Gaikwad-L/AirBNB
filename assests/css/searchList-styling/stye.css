@@ -118,9 +118,19 @@ header {
     display: none;
 }
 
+.card-anchor{
+    text-decoration: none;
+    color: #000;
+}
+
+.card-anchor:hover{
+    color: #000;
+}
+
 #map {
     width: 40%;
     height: 100%;
+    display: flex;
 }
 
 .my-card {

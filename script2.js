@@ -17,8 +17,8 @@ async function getAPIdata(place, checkIn, checkOut, guests) {
     return fetch(url, options)
 }
 
-
-function createCard(thumbNail, hotelType, ratings, reviewsCount, hotelName, noBeds, noBedrooms, prize) {
+// this function is used to render cards
+function createCard(thumbNail, hotelType, ratings, reviewsCount, hotelName, noBeds, noBedrooms, prize, hotelLink) {
     let card = document.createElement("div");
     card.classList.add("my-card");
 
@@ -67,9 +67,16 @@ function createCard(thumbNail, hotelType, ratings, reviewsCount, hotelName, noBe
     priceDisplay.innerText = "₹" + prize
     card.appendChild(priceDisplay);
 
-    cardContainer.appendChild(card);
+    const cardAnchor = document.createElement("a");
+    cardAnchor.href = hotelLink;
+    cardAnchor.target = "_blank";
+    cardAnchor.classList.add("card-anchor");
+
+    cardAnchor.appendChild(card);
+    cardContainer.appendChild(cardAnchor);
 }
 
+// this function is used to format date like 26-10-2023 => 26 Oct
 function formatDate(checkIn, checkOut) {
     const startDate = new Date(checkIn);
     const endDate = new Date(checkOut);
@@ -90,18 +97,39 @@ function formatDate(checkIn, checkOut) {
     }
 }
 
+async function getLatLong(place) {
+    const url = `https://address-from-to-latitude-longitude.p.rapidapi.com/geolocationapi?address=${place}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'c5014a6b6emsh84288eb75db9f9fp1759f6jsn73c5e567590c',
+            'X-RapidAPI-Host': 'address-from-to-latitude-longitude.p.rapidapi.com'
+        }
+    };
 
-
-
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        const latlongObj = {
+            lat: result.Results[0].latitude,
+            long: result.Results[0].longitude
+        }
+        return latlongObj;
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 
 // ******************** Google maps logic *******************//
 
 async function initMap() {
     try {
+        //this will load the map from google servers
+        const latlonginfo = await getLatLong(apiObject.place);
         const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 10.5,
-            center: { lat: 12.972442, lng: 77.580643 },
+            zoom: 12,
+            center: { lat: latlonginfo.lat, lng: latlonginfo.long },
             streetViewControl: false,
             zoomControl: true,
             zoomControlOptions: {
@@ -114,12 +142,18 @@ async function initMap() {
             mapTypeControl: false,
             rotateControl: false
         })
-        // const response = await getAPIdata(apiObject.place, apiObject.checkIn, apiObject.checkOut, apiObject.guests)
+        // now the map is loaded calling the AirBNB api to get hotel details
+
+        const response = await getAPIdata(apiObject.place, apiObject.checkIn, apiObject.checkOut, apiObject.guests)
         const data = await response.json();
         if (data.message !== limitErr) {
             console.log(data);
             for (let i = 0; i < data.results.length; i++) {
-                createCard(data.results[i].images[0], data.results[i].type, data.results[i].rating, data.results[i].reviewsCount, data.results[i].name, data.results[i].beds, data.results[i].bedrooms, data.results[i].price.rate);
+                // function call too render cards
+                createCard(data.results[i].images[0], data.results[i].type, data.results[i].rating, data.results[i].reviewsCount, data.results[i].name, data.results[i].beds, data.results[i].bedrooms, data.results[i].price.rate, data.results[i].deeplink);
+                // function call to add markers on he map
+                // passing the hotel name, latitude and longitude to setmarker function
+                // the hotel name must be a string
                 setMarkers(map, data.results[i].lat, data.results[i].lng, JSON.stringify(data.results[i].name));
             }
         }
@@ -129,16 +163,8 @@ async function initMap() {
 
 }
 
-
+// this function will add marker on the map
 function setMarkers(map, lat, lng, title) {
-    console.log(title);
-
-    // Adds markers to the map.
-    // Marker sizes are expressed as a Size of X,Y where the origin of the image
-    // (0,0) is located in the top left of the image.
-    // Origins, anchor positions and coordinates of the marker increase in the X
-    // direction to the right and in the Y direction down.
-
     new google.maps.Marker({
         position: { lat: lat, lng: lng },
         // label: b,
