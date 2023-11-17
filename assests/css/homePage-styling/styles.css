@@ -88,15 +88,117 @@ header {
     transition: all .2s ease-in;
 }
 
+::-webkit-datetime-edit { padding: 5px;}
+::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    border: 1px solid #0000001e;
+    border-radius: 3px;
+}
+
 .search-box>div {
     border-right: 1px solid lightgray;
 }
 
-#guests, #location{
+.dropdown{
+    width: 450px;
+    height: 425px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 830px;
+    top: -10px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding-inline: 30px;
+    display: none;
+}
+
+.dropdown>div{
+    width: 100%;
+    height: 80px;
+    background-color: transparent;
+    display: flex;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.26);
+}
+
+.label{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.label>h5{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.label>p{
+    font-size: 12px;
+    color: rgb(155, 154, 154) ;
+}
+
+.counter{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    background-color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.counter>div{
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter-btn{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1px solid grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter-btn:hover{
+    cursor: pointer;
+    border: 2px solid #CC2D4A;
+}
+
+.label a{
+    color: rgb(155, 154, 154) ;
+}
+
+.disabled-btn{
+    border: 1px solid rgb(215, 215, 215);
+}
+
+.disabled-btn:hover{
+    cursor: not-allowed;
+    border: 1px solid rgb(215, 215, 215);
+}
+
+
+
+#guests,
+#location {
     width: 150px;
 }
 
-.new-search{
+.new-search {
     width: 100px;
     border-radius: 20px;
     display: flex;
@@ -105,7 +207,7 @@ header {
     font-size: 16px;
 }
 
-#search-btn-div{
+#search-btn-div {
     border: none;
     width: 120px;
     display: flex;
@@ -133,10 +235,11 @@ label {
     height: 110vh;
     display: flex;
     align-items: center;
-    overflow: hidden;
+    /* overflow: hidden; */
     background: #000;
     flex-direction: column;
     gap: 20px;
+    position: relative;
 }
 
 .home-page img {

@@ -13,7 +13,7 @@ document.title = `Airbnb | ${apiObject.place} - Holiday Rentals & Places to Stay
 
 
 async function getAPIdata(place, checkIn, checkOut, guests) {
-    const url = `https://airbnb13.p.rapidapi.com/search-location?location=${place}&checkin=${checkIn}&checkout=${checkOut}&adults=${guests}&children=0&infants=0&pets=0&page=1&currency=INR`;
+    const url = `https://airbnb13.p.rapidapi.com/search-location?location=${place}&checkin=${checkIn}&checkout=${checkOut}&adults=${guests[0]}&children=${guests[1]}&infants=${guests[2]}&pets=${guests[3]}&page=1&currency=INR`;
     return fetch(url, options)
 }
 

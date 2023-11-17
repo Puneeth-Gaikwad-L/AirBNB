@@ -75,9 +75,9 @@
                 <label for="Check-out">Check out</label><br>
                 <input id="check-out" type="date" name="checkOut" placeholder="Add date">
             </div>
-            <div>
+            <div id="guests-container">
                 <label for="guests">Add guests</label><br>
-                <input id="guests" type="text" name="guests" placeholder="Add guests">
+                <input id="guests" type="text" name="guests" placeholder="Add guests" autocomplete="off">
             </div>
             <div id="search-btn-div">
                 <button type="submit" id="search-btn" class="search-btn">
@@ -88,8 +88,75 @@
         </form>
     </header>
 
+    
 
     <section class="home-page">
+        <div id="dropdown" class="dropdown">
+            <div>
+                <div class="label">
+                    <h5>Adults</h5>
+                    <p>Ages 13 or above</p>
+                </div>
+                <div class="counter">
+                    <button id="Adecrement" class="counter-btn">
+                        <i class="fa-solid fa-minus" style="color: #000000;"></i>
+                    </button>
+                    <div id="Adults">0</div>
+                    <button id="Aincrement" class="counter-btn">
+                        <i class="fa-solid fa-plus" style="color: #000000;"></i>
+                    </button>
+                </div>
+                
+            </div>
+            <div>
+                <div class="label">
+                    <h5>Children</h5>
+                    <p>Ages 2-12</p>
+                </div>
+                <div class="counter">
+                    <button id="Cdecrement" class="counter-btn">
+                        <i class="fa-solid fa-minus" style="color: #000000;"></i>
+                    </button>
+                    <div id="Children">0</div>
+                    <button id="Cincrement" class="counter-btn">
+                        <i class="fa-solid fa-plus" style="color: #000000;"></i>
+                    </button>
+                </div>
+                
+            </div>
+            <div>
+                <div class="label">
+                    <h5>Infants</h5>
+                    <p>Under 2</p>
+                </div>
+                <div class="counter">
+                    <button id="Idecrement" class="counter-btn">
+                        <i class="fa-solid fa-minus" style="color: #000000;"></i>
+                    </button>
+                    <div id="Infants">0</div>
+                    <button id="Iincrement" class="counter-btn">
+                        <i class="fa-solid fa-plus" style="color: #000000;"></i>
+                    </button>
+                </div>
+                
+            </div>
+            <div>
+                <div class="label">
+                    <h5>Pets</h5>
+                    <p><a href="https://www.airbnb.co.in/help/article/1869">Bringing a service animal?</a></p>
+                </div>
+                <div class="counter">
+                    <button id="Pdecrement" class="counter-btn">
+                        <i class="fa-solid fa-minus" style="color: #000000;"></i>
+                    </button>
+                    <div id="Pets">0</div>
+                    <button id="Pincrement" class="counter-btn">
+                        <i class="fa-solid fa-plus" style="color: #000000;"></i>
+                    </button>
+                </div>
+                
+            </div>
+        </div>
 
         <img src="./assests/Images/home-img/Big Card.png" alt="">
     </section>
