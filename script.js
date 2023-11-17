@@ -242,23 +242,28 @@ let year = date.getFullYear();
 date1.min = `${year}-${month}-${day}`;
 date2.min = `${year}-${month}-${day}`;
 
-searchBox.addEventListener("mouseenter", function () {
-    searchTxt.innerText = "Search"
+searchBox.addEventListener("click", function () {
+    searchTxt.innerText = "Search";
     searchBtn.classList.add("new-search");
 });
 
-searchBox.addEventListener("mouseleave", function () {
-    searchTxt.innerText = ""
-    searchBtn.classList.remove("new-search");
+document.addEventListener("click", function (event) {
+    if (!document.getElementById("dropdown").contains(event.target)) {
+        if (!document.getElementById("search-bar").contains(event.target)) {
+            searchTxt.innerText = "";
+            searchBtn.classList.remove("new-search");
+        }
+    }
 });
 
 const guestsInput = document.getElementById("guests");
 guestsInput.addEventListener("focus", function () {
     document.getElementById("dropdown").style.display = "flex";
+    searchTxt.innerText = "Search";
+    searchBtn.classList.add("new-search");
 });
 
 document.addEventListener("click", function (event) {
-    console.log("Evene called click")
     if (!document.getElementById("dropdown").contains(event.target)) {
         if (!document.getElementById("guests-container").contains(event.target)) {
             document.getElementById("dropdown").style.display = "none";
