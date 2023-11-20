@@ -2,15 +2,23 @@ const searchTxt = document.getElementById("search");
 const searchBox = document.getElementById("search-bar");
 const searchBtn = document.getElementById("search-btn");
 const form = document.getElementById("search-bar");
-const date1 = document.getElementById("check-in");
-const date2 = document.getElementById("check-out");
-const Aincrement = document.getElementById("Aincrement");
-const Adecrement = document.getElementById("Adecrement");
+
+const locationInput = document.getElementById("location");
+
+locationInput.addEventListener("keyup", function (event) {
+    console.log(event.target.value);
+});
+
+
+
 
 let Adults = 0;
 let children = 0;
 let infants = 0;
 let pets = 0;
+
+const Aincrement = document.getElementById("Aincrement");
+const Adecrement = document.getElementById("Adecrement");
 
 Adecrement.disabled = true;
 Adecrement.classList.add("disabled-btn");
@@ -227,6 +235,8 @@ Pdecrement.addEventListener("click", function () {
     Myvalue.innerText = newValue;
 });
 
+const date1 = document.getElementById("check-in");
+const date2 = document.getElementById("check-out");
 
 let date = new Date();
 let day = date.getDate();
