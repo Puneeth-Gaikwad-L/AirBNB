@@ -217,4 +217,66 @@ header {
     width: 100vw;
     height: 50vh;
     background-color: #e5e5e5;
+    padding-top: 20px;
+}
+
+table {
+    width: 90%;
+    height: 80%;
+    margin-inline: auto;
+    font-size: 14px;
+}
+
+th {
+    text-align: start;
+}
+
+td {
+    color: #4B5563;
+}
+
+
+.fotter-finisher {
+    display: flex;
+    height: 50px;
+    width: 95%;
+    align-items: center;
+    margin-inline: auto;
+    justify-content: space-between;
+    color: #4B5563;
+    border-top: 1px solid lightgray;
+}
+
+.fotter-left {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.fotter-left>a {
+    text-decoration: none;
+    color: #4B5563;
+}
+
+.fotter-right {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.fotter-right>a {
+    color: #4B5563;
+    text-decoration-line: underline;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icons>a {
+    color: #4B5563;
 }

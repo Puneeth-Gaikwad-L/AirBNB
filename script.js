@@ -341,9 +341,9 @@ function debounce(normalFn, delay) {
 const placesContainer = document.getElementById("places-container");
 function createPlaceCards(place) {
     let placecard = document.createElement("div");
-    placecard.id = "locationName";
+    placecard.id = place;
     placecard.classList.add("place");
-    
+
 
     let locationLogo = document.createElement("div");
     locationLogo.classList.add("location-logo");
@@ -356,7 +356,9 @@ function createPlaceCards(place) {
 
     placecard.appendChild(placeName);
     placecard.addEventListener('click', function (e) {
-        console.log(e.target)
+        let pTagContent = placecard.querySelector('p').textContent;
+        locationInput.value = pTagContent;
+        document.getElementById("suggestions").style.display = "none";
     })
 
     placesContainer.appendChild(placecard);
@@ -368,6 +370,13 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     if (e.target.checkIn.value === "" || e.target.checkOut.value === "") {
         console.error("Invalid date");
+        let errorTab = document.getElementById("err")
+        errorTab.innerText = "Please enter a valid check-in and check-out date";
+        errorTab.style.top = "150px"
+        setTimeout(() => {
+            errorTab.style.top = "110px"
+            errorTab.innerText = "";
+        }, 4000);
         return;
     }
 
@@ -378,6 +387,13 @@ form.addEventListener("submit", (e) => {
 
     if (date1.getTime() > date2.getTime()) {
         console.error("Invalid checkOut");
+        let errorTab = document.getElementById("err")
+        errorTab.innerText = "Invalid check-out";
+        errorTab.style.top = "150px"
+        setTimeout(() => {
+            errorTab.style.top = "110px"
+            errorTab.innerText = "";
+        }, 4000);
         return;
     }
     const searchPlace = {

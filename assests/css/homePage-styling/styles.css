@@ -14,7 +14,7 @@ header {
     position: sticky;
     top: 0;
     padding: 15px;
-    z-index: 1;
+    z-index: 3;
 }
 
 .header {
@@ -101,6 +101,26 @@ header {
 
 .search-box>div {
     border-right: 1px solid lightgray;
+}
+
+.error{
+    width: 500px;
+    height: 30px;
+    background-color: rgba(255, 0, 0, 0.945);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 110px;
+    left: 510px;
+    z-index: 2;
+    border-radius: 10px;
+    border: 2px solid red;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px;
+    transition: all 0.3s ease-in;
 }
 
 .suggestion-dropdown{
