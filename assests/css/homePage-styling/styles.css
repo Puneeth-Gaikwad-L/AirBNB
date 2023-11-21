@@ -14,6 +14,7 @@ header {
     position: sticky;
     top: 0;
     padding: 15px;
+    z-index: 1;
 }
 
 .header {
@@ -88,7 +89,10 @@ header {
     transition: all .2s ease-in;
 }
 
-::-webkit-datetime-edit { padding: 5px;}
+::-webkit-datetime-edit {
+    padding: 5px;
+}
+
 ::-webkit-calendar-picker-indicator {
     cursor: pointer;
     border: 1px solid #0000001e;
@@ -99,13 +103,79 @@ header {
     border-right: 1px solid lightgray;
 }
 
-.dropdown{
+.suggestion-dropdown{
+    width: 350px;
+    height: 350px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0px;
+    left: 380px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    display: none;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.container{
+    width: 95%;
+    height: 95%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    overflow-y: scroll;
+}
+
+.container::-webkit-scrollbar{
+    display: none;
+}
+
+.place{
+    width: 95%;
+    height: 50px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.place:hover{
+    cursor: pointer;
+    background-color: #f7f7f7;
+}
+
+.location-logo{
+    width: 50px;
+    height: 100%;
+    background-color: rgb(192, 192, 192);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.place>p{
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.dropdown {
     width: 450px;
     height: 425px;
     background-color: #ffffff;
     position: absolute;
     left: 830px;
-    top: -10px;
+    top: 0px;
     border-radius: 25px;
     display: flex;
     flex-direction: column;
@@ -116,7 +186,7 @@ header {
     display: none;
 }
 
-.dropdown>div{
+.dropdown>div {
     width: 100%;
     height: 80px;
     background-color: transparent;
@@ -125,7 +195,7 @@ header {
     border-bottom: 1px solid rgba(128, 128, 128, 0.26);
 }
 
-.label{
+.label {
     width: 50%;
     height: 100%;
     display: flex;
@@ -135,17 +205,17 @@ header {
     background-color: transparent;
 }
 
-.label>h5{
+.label>h5 {
     font-size: 16px;
     font-weight: 500;
 }
 
-.label>p{
+.label>p {
     font-size: 12px;
-    color: rgb(155, 154, 154) ;
+    color: rgb(155, 154, 154);
 }
 
-.counter{
+.counter {
     width: 50%;
     height: 100%;
     display: flex;
@@ -155,14 +225,14 @@ header {
     gap: 10px;
 }
 
-.counter>div{
+.counter>div {
     width: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.counter-btn{
+.counter-btn {
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -173,20 +243,20 @@ header {
     justify-content: center;
 }
 
-.counter-btn:hover{
+.counter-btn:hover {
     cursor: pointer;
     border: 2px solid #CC2D4A;
 }
 
-.label a{
-    color: rgb(155, 154, 154) ;
+.label a {
+    color: rgb(155, 154, 154);
 }
 
-.disabled-btn{
+.disabled-btn {
     border: 1px solid rgb(215, 215, 215);
 }
 
-.disabled-btn:hover{
+.disabled-btn:hover {
     cursor: not-allowed;
     border: 1px solid rgb(215, 215, 215);
 }
@@ -240,7 +310,7 @@ label {
     flex-direction: column;
     gap: 20px;
     position: relative;
-    z-index: -1;
+   
 }
 
 .home-page img {

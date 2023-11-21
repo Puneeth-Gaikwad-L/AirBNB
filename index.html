@@ -68,10 +68,11 @@
                 </div>
             </div>
         </div>
+
         <form id="search-bar" class="search-box">
-            <div>
+            <div id="location-container">
                 <label for="location">Location</label><br>
-                <input id="location" type="text" name="place" placeholder="Where are you going?">
+                <input id="location" type="text" name="place" placeholder="Where are you going?" autocomplete="off">
             </div>
             <div>
                 <label for="Check-in">Check in</label><br>
@@ -97,6 +98,17 @@
 
 
     <section class="home-page">
+        <div id="suggestions" class="suggestion-dropdown">
+            <div id="places-container" class="container">
+                <!-- <div class="place">
+                    <div class="location-logo">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <p>Bengaluru, karnataka</p>
+                </div> -->
+            </div>
+        </div>
+
         <div id="dropdown" class="dropdown">
             <div>
                 <div class="label">
@@ -112,8 +124,8 @@
                         <i class="fa-solid fa-plus" style="color: #000000;"></i>
                     </button>
                 </div>
-
             </div>
+
             <div>
                 <div class="label">
                     <h5>Children</h5>
@@ -128,8 +140,8 @@
                         <i class="fa-solid fa-plus" style="color: #000000;"></i>
                     </button>
                 </div>
-
             </div>
+
             <div>
                 <div class="label">
                     <h5>Infants</h5>
@@ -144,8 +156,8 @@
                         <i class="fa-solid fa-plus" style="color: #000000;"></i>
                     </button>
                 </div>
-
             </div>
+
             <div>
                 <div class="label">
                     <h5>Pets</h5>
