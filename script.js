@@ -288,17 +288,41 @@ document.addEventListener("click", function (event) {
 });
 
 const locationInput = document.getElementById("location");
+const suggestions = document.getElementById("suggestions");
+
+locationInput.addEventListener("focus", function (event) {
+    if (event.target.value === "") {
+        suggestions.style.width = "500px"
+        suggestions.style.height = "450px"
+        suggestions.style.display = "flex";
+    }
+});
 locationInput.addEventListener("keyup", function (event) {
     if (event.target.value === "") {
-        document.getElementById("suggestions").style.display = "none";
+        suggestions.style.width = "500px"
+        suggestions.style.height = "450px"
+        document.getElementById("region-suggestion").style.display = "flex"
+        suggestions.style.display = "flex";
     } else {
-        document.getElementById("suggestions").style.display = "flex";
+        suggestions.style.width = "350px"
+        suggestions.style.height = "350px"
+        suggestions.style.display = "flex";
         optimalfn(event);
+        document.getElementById("region-suggestion").style.display = "none"
     }
 });
 
-const optimalfn = debounce(searchFun, 200);
+function getLocation(event) {
+    console.log(event.target);
+    let imgTag = event.target;
+    console.log(imgTag.alt);
+    locationInput.value = imgTag.alt;
+    suggestions.style.display = "none";
+}
 
+// optimalfn will be called every 200ms for the value entered in the location input element
+const optimalfn = debounce(searchFun, 200);
+// this function returns an arr of suggestions for the payload given
 async function searchFun(event) {
     console.log(event.target.value);
     let payload = event.target.value;
@@ -323,7 +347,7 @@ async function searchFun(event) {
     }
 }
 
-
+// debounce function that takes a normal function and delay value as args and returns a modified version of that function
 function debounce(normalFn, delay) {
     let timerId;
     return function (...args) {
@@ -337,7 +361,7 @@ function debounce(normalFn, delay) {
     }
 };
 
-
+// this function adds the suggestions into the suggestion dropdown
 const placesContainer = document.getElementById("places-container");
 function createPlaceCards(place) {
     let placecard = document.createElement("div");
@@ -355,7 +379,7 @@ function createPlaceCards(place) {
     placeName.innerText = place;
 
     placecard.appendChild(placeName);
-    placecard.addEventListener('click', function (e) {
+    placecard.addEventListener('click', function () {
         let pTagContent = placecard.querySelector('p').textContent;
         locationInput.value = pTagContent;
         document.getElementById("suggestions").style.display = "none";
@@ -368,6 +392,7 @@ function createPlaceCards(place) {
 // extracting all the values in the search bar and creating an obj to send it to api
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    // checking if any of the dates are empty
     if (e.target.checkIn.value === "" || e.target.checkOut.value === "") {
         console.error("Invalid date");
         let errorTab = document.getElementById("err")
@@ -384,7 +409,7 @@ form.addEventListener("submit", (e) => {
     let date2 = new Date(e.target.checkOut.value);
 
     console.log(date1.getTime(), date2.getTime());
-
+// checking if the check-in and check-out dates are valid
     if (date1.getTime() > date2.getTime()) {
         console.error("Invalid checkOut");
         let errorTab = document.getElementById("err")
