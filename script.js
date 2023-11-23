@@ -298,23 +298,25 @@ const suggestions = document.getElementById("suggestions");
 
 locationInput.addEventListener("focus", function (event) {
     if (event.target.value === "") {
-        suggestions.style.width = "500px"
-        suggestions.style.height = "450px"
+        suggestions.style.width = "550px"
+        suggestions.style.height = "500px"
         suggestions.style.display = "flex";
     }
 });
 locationInput.addEventListener("keyup", function (event) {
     if (event.target.value === "") {
-        suggestions.style.width = "500px"
-        suggestions.style.height = "450px"
+        suggestions.style.width = "550px"
+        suggestions.style.height = "500px"
+        placesContainer.style.display = "none"
         document.getElementById("region-suggestion").style.display = "flex"
         suggestions.style.display = "flex";
     } else {
         suggestions.style.width = "350px"
         suggestions.style.height = "350px"
         suggestions.style.display = "flex";
-        optimalfn(event);
         document.getElementById("region-suggestion").style.display = "none"
+        placesContainer.style.display = "flex"
+        optimalfn(event);
     }
 });
 
