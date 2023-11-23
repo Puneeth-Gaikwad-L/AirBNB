@@ -1,3 +1,9 @@
+const popUp = document.getElementById("popUp");
+const popUpBtn = document.getElementById("popUp-btn");
+popUpBtn.addEventListener("click", function () {
+    popUp.style.display = "none";
+ });
+
 const searchTxt = document.getElementById("search");
 const searchBox = document.getElementById("search-bar");
 const searchBtn = document.getElementById("search-btn");

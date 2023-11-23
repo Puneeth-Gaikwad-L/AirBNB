@@ -9,6 +9,10 @@ body {
     overflow-x: hidden;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 header {
     width: 100vw;
     height: 150px;
