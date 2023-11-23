@@ -41,15 +41,18 @@ This project is an Airbnb clone that replicates the core functionality of the Ai
 
 ### Homepage
 
-![Alt text](./assests/Images/readme%20imgs/image.png)
+![image](https://github.com/Puneeth-Gaikwad-L/AirBNB-clone/assets/130468175/2a507ab9-0df1-40b6-9445-4609d7f57f5a)
+
 
 ### Listing Page
 
-![Alt text](./assests/Images/readme%20imgs/image-2.png)
+![image-1](https://github.com/Puneeth-Gaikwad-L/AirBNB-clone/assets/130468175/61cbef4f-e416-4191-bb84-ca8fe3a3a14f)
+
 
 ### Hotel Details Page
 
-![Alt text](./assests/Images/readme%20imgs/image-1.png)
+![image-2](https://github.com/Puneeth-Gaikwad-L/AirBNB-clone/assets/130468175/50d7fede-d2e7-482e-96f7-dccc9e70eeb7)
+
 
 ## New-Learning
 
