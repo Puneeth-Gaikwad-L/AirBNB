@@ -76,6 +76,16 @@ function createCard(thumbNail, hotelType, ratings, reviewsCount, hotelName, noBe
     cardContainer.appendChild(cardAnchor);
 }
 
+const destination = document.getElementById("location");
+const dates = document.getElementById("dates");
+const people = document.getElementById("people");
+function addDataToSearchBar() {
+    let inputplace = apiObject.place;
+    destination.innerText = inputplace.split(',')[0];
+    dates.innerText = formatDate(apiObject.checkIn, apiObject.checkOut);
+    people.innerText = `${apiObject.guests[0]} guests`;
+}
+
 // this function is used to format date like 26-10-2023 => 26 Oct
 function formatDate(checkIn, checkOut) {
     const startDate = new Date(checkIn);
@@ -149,12 +159,14 @@ async function initMap() {
         if (data.message !== limitErr) {
             console.log(data);
             for (let i = 0; i < data.results.length; i++) {
-                // function call too render cards
+                // function call to render cards
                 createCard(data.results[i].images[0], data.results[i].type, data.results[i].rating, data.results[i].reviewsCount, data.results[i].name, data.results[i].beds, data.results[i].bedrooms, data.results[i].price.rate, data.results[i].deeplink);
                 // function call to add markers on he map
                 // passing the hotel name, latitude and longitude to setmarker function
                 // the hotel name must be a string
                 setMarkers(map, data.results[i].lat, data.results[i].lng, JSON.stringify(data.results[i].name));
+                // this function adds info to the search bar at the top of the page
+                addDataToSearchBar();
             }
         }
     } catch (err) {

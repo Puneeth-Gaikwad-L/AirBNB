@@ -45,7 +45,7 @@ html {
     padding: 10px;
     border-radius: 10px;
     border: none;
-    background-color: #ff4567;
+    background-color: rgba(255, 0, 0, 0.69);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,6 +57,10 @@ html {
 .popUp-btn:hover{
     cursor: pointer;
     background-color: rgba(255, 0, 0, 0.752);
+}
+
+.popUp-btn:active{
+    scale: 0.95;
 }
 
 .popUp>h5{
