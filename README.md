@@ -9,7 +9,7 @@ This project is an Airbnb clone that replicates the core functionality of the Ai
 - [Screenshots](#screenshots)
 - [New-Learning](#New-Learning)
 - [Credits](#Credits)
-- [Contributing](#contributing)
+
 - [License](#license)
 
 ## Features
@@ -41,15 +41,15 @@ This project is an Airbnb clone that replicates the core functionality of the Ai
 
 ### Homepage
 
-![Homepage](path/to/homepage-screenshot.png)
+![Alt text](./assests/Images/readme%20imgs/image.png)
 
 ### Listing Page
 
-![Listing Page](path/to/listing-page-screenshot.png)
+![Alt text](./assests/Images/readme%20imgs/image-1.png)
 
 ### Hotel Details Page
 
-![Hotel Details Page](path/to/hotel-details-page-screenshot.png)
+![Alt text](./assests/Images/readme%20imgs/image-2.png)
 
 ## New-Learning
 
@@ -62,10 +62,6 @@ Airbnb API: [https://rapidapi.com/3b-data-3b-data-default/api/airbnb13/](RapidAP
 Google Maps API: [https://developers.google.com/maps](Google-Cloud-Platform)
 
 GeoLocation API: [https://rapidapi.com/apishub/api/address-from-to-latitude-longitude](GeoLocation-API)
-
-## Contributing
-
-Contributions are welcome! If you'd like to contribute to the project, please follow the [contribution guidelines](CONTRIBUTING.md).
 
 ## License
 
