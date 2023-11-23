@@ -8,8 +8,8 @@ This project is an Airbnb clone that replicates the core functionality of the Ai
 - [Tech Stack](#tech-stack)
 - [Screenshots](#screenshots)
 - [New-Learning](#New-Learning)
+- [Drawbacks](#Drawbacks)
 - [Credits](#Credits)
-
 - [License](#license)
 
 ## Features
@@ -57,6 +57,10 @@ This project is an Airbnb clone that replicates the core functionality of the Ai
 ## New-Learning
 
 One significant learning in this project was the implementation of debouncing. Usually used for performance improvement, I applied debouncing for API calls when showing suggestions. This helped optimize the user experience by reducing unnecessary API calls and enhancing the overall performance of the application.
+
+## Drawbacks
+
+The application is not responsive, which means it may not provide an optimal user experience on various devices with different screen sizes. Users accessing the site from mobile devices or tablets may encounter difficulties navigating and interacting with the content. Addressing this issue should be a priority to ensure a seamless and accessible experience for all users across different platforms.
 
 ## Credits
 
