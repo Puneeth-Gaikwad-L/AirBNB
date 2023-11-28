@@ -338,7 +338,7 @@ async function searchFun(event) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '35529e50acmshe42c2bf03c7e96dp12989cjsn06b3989d95a2',
+            'X-RapidAPI-Key': '420050ebc9msh160870facdbed95p1a46d7jsn452254e59978',
             'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com'
         }
     };
