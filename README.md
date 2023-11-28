@@ -8,8 +8,8 @@ This project is an Airbnb clone that replicates the core functionality of the Ai
 - [Tech Stack](#tech-stack)
 - [Screenshots](#screenshots)
 - [New-Learning](#New-Learning)
+- [Drawbacks](#Drawbacks)
 - [Credits](#Credits)
-
 - [License](#license)
 
 ## Features
@@ -41,19 +41,35 @@ This project is an Airbnb clone that replicates the core functionality of the Ai
 
 ### Homepage
 
+<<<<<<< HEAD
+=======
+![image](https://github.com/Puneeth-Gaikwad-L/AirBNB-clone/assets/130468175/2a507ab9-0df1-40b6-9445-4609d7f57f5a)
+>>>>>>> 5fab69e435fc8832b5f02ef18382d9dd16e033f5
 
 
 ### Listing Page
 
+<<<<<<< HEAD
+=======
+![image-2](https://github.com/Puneeth-Gaikwad-L/AirBNB-clone/assets/130468175/50d7fede-d2e7-482e-96f7-dccc9e70eeb7)
+>>>>>>> 5fab69e435fc8832b5f02ef18382d9dd16e033f5
 
 
 ### Hotel Details Page
 
+<<<<<<< HEAD
+=======
+![image-1](https://github.com/Puneeth-Gaikwad-L/AirBNB-clone/assets/130468175/61cbef4f-e416-4191-bb84-ca8fe3a3a14f)
+>>>>>>> 5fab69e435fc8832b5f02ef18382d9dd16e033f5
 
 
 ## New-Learning
 
 One significant learning in this project was the implementation of debouncing. Usually used for performance improvement, I applied debouncing for API calls when showing suggestions. This helped optimize the user experience by reducing unnecessary API calls and enhancing the overall performance of the application.
+
+## Drawbacks
+
+The application is not responsive, which means it may not provide an optimal user experience on various devices with different screen sizes. Users accessing the site from mobile devices or tablets may encounter difficulties navigating and interacting with the content. Addressing this issue should be a priority to ensure a seamless and accessible experience for all users across different platforms.
 
 ## Credits
 
