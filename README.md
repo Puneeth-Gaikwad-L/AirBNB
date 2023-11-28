@@ -41,15 +41,15 @@ This project is an Airbnb clone that replicates the core functionality of the Ai
 
 ### Homepage
 
-![Alt text](./assests/Images/readme%20imgs/image.png)
+
 
 ### Listing Page
 
-![Alt text](./assests/Images/readme%20imgs/image-2.png)
+
 
 ### Hotel Details Page
 
-![Alt text](./assests/Images/readme%20imgs/image-1.png)
+
 
 ## New-Learning
 
